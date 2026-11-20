@@ -319,13 +319,29 @@ func (w *Workspace) allRedefined(f *el, seen map[*el]bool) []*el {
 // removeRedefined follows Type.removeRedefinedFeatures: a membership whose
 // feature is redefined by another candidate is dropped.
 func (w *Workspace) removeRedefined(ms []*el) []*el {
+	return w.removeRedefinedBy(ms, func(e *el) []*el { return w.allRedefined(e, map[*el]bool{e: true}) })
+}
+
+// removeRedefinedWithComputed is removeRedefined counting the redefinitions
+// the specification implies as well as the written ones.
+func (w *Workspace) removeRedefinedWithComputed(ms []*el) []*el {
+	return w.removeRedefinedBy(ms, func(e *el) []*el {
+		var out []*el
+		for g := range w.allRedefinedWithComputed(e) {
+			out = append(out, g)
+		}
+		return out
+	})
+}
+
+func (w *Workspace) removeRedefinedBy(ms []*el, redefinedBy func(*el) []*el) []*el {
 	if len(ms) < 2 {
 		return ms
 	}
 	redefined := map[*el]bool{}
 	for _, m := range ms {
 		if e := w.memberElement(m); e.IsA("Feature") {
-			for _, g := range w.allRedefined(e, map[*el]bool{e: true}) {
+			for _, g := range redefinedBy(e) {
 				redefined[g] = true
 			}
 		}
