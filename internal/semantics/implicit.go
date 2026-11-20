@@ -1483,7 +1483,16 @@ func (w *Workspace) ImpliedFeaturingTypes(f *el) []*el {
 				}
 			}
 		} else if f.Owner.IsA("FeatureValue") {
-			ifNecessary()
+			// a bound value is transformed while its owner is, and the snapshots
+			// feature of a variable owner is not yet featuring it; a default
+			// value is transformed later
+			if owner.IsA("Feature") && len(out) == 0 {
+				for _, t := range w.featuringTypesOf(owner) {
+					if !t.Generated || f.Owner.IsTrue("isDefault") || w.owningTypeIs(owner, "ConstraintDefinition") {
+						add(t)
+					}
+				}
+			}
 		}
 	}
 	// FeatureAdapter.addOwnedCrossFeatureTypeFeaturing

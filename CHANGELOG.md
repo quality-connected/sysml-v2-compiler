@@ -6,6 +6,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- The expression in a bound value (`= ...`) of a variable feature is no longer
+  featured by the generated snapshots feature of its owner, as the pilot does
+  not (195 extra implied relationships down to 56).
+
 ## [0.20.7] - 2026-10-28
 
 ### Added
