@@ -215,6 +215,7 @@ func (w *Workspace) computeImplicit(t *el, add func(string, *el), soFar func() [
 	if t.IsA("Feature") {
 		w.addParticipantSubsetting(t, add)
 		w.addCrossingSpecialization(t, add)
+		w.addFeatureWriteTypes(t, add)
 		w.addRedefinitions(t, add) // FeatureAdapter.addRedefinitions
 		// the payload of a transition subsets its trigger's payload, as the
 		// chain [accept action, payload] (TransitionUsageAdapter)
@@ -621,11 +622,7 @@ func (w *Workspace) relevantFeatures(f, t *el) []*el {
 		if owning == t {
 			params = w.ownedParameters(t)
 		} else {
-			for _, x := range w.features(t) {
-				if x.Has("direction") {
-					params = append(params, x)
-				}
-			}
+			params = w.directedFeatures(t)
 		}
 		var out []*el
 		for _, p := range params {
@@ -636,6 +633,37 @@ func (w *Workspace) relevantFeatures(f, t *el) []*el {
 		return out
 	}
 	return nil
+}
+
+// directedFeatures is TypeUtil.getDirectedFeatureOf: the features of a type
+// that have a direction, where an inherited one that an owned feature, or
+// another inherited one, redefines (written or implied) is left out
+// (TypeAdapter.removeRedefinedFeatures).
+func (w *Workspace) directedFeatures(t *el) []*el {
+	redefined := map[*el]bool{}
+	var out []*el
+	for _, f := range w.ownedFeatures(t) {
+		for g := range w.allRedefinedWithComputed(f) {
+			redefined[g] = true
+		}
+		if f.Has("direction") {
+			out = append(out, f)
+		}
+	}
+	var inherited []*el
+	for _, m := range w.inherited(t, map[*el]bool{t: true}) {
+		if m.IsA("FeatureMembership") {
+			if f := w.memberElement(m); f.IsA("Feature") && !redefined[f] {
+				inherited = append(inherited, m)
+			}
+		}
+	}
+	for _, m := range w.removeRedefinedWithComputed(inherited) {
+		if f := w.memberElement(m); f.Has("direction") {
+			out = append(out, f)
+		}
+	}
+	return out
 }
 
 // redefinedActionFeature follows ActionUsageAdapter.getRedefinedFeature: the
@@ -649,6 +677,54 @@ func (w *Workspace) redefinedActionFeature(f *el) string {
 		return implicitKind(f.Class, f.Owner.Text("kind"))
 	}
 	return ""
+}
+
+// addFeatureWriteTypes follows FeatureAdapter.addFeatureWriteTypes: in
+// `assign a.b := v` the first parameter (the target) holds a feature that
+// redefines startingAt, which holds one that redefines accessedFeature and the
+// referent (the feature `a.b` names).
+func (w *Workspace) addFeatureWriteTypes(f *el, add func(string, *el)) {
+	switch {
+	case w.isStartingAtFeature(f):
+		add("Redefinition", w.libraryElement(implicitKind(f.Class, "startingAt")))
+	case w.isAccessedFeature(f):
+		add("Redefinition", w.libraryElement(implicitKind(f.Class, "accessedFeature")))
+		// the assignment is the owner's owner's owner: the target's feature's feature
+		if action := w.featureOwningType(w.featureOwningType(w.featureOwningType(f))); action != nil {
+			for _, m := range w.rels(action, "Membership") {
+				if m.Class == "Membership" {
+					if referent := w.memberElement(m); referent.IsA("Feature") {
+						add("Redefinition", referent)
+					}
+					break
+				}
+			}
+		}
+	}
+}
+
+// isStartingAtFeature: f is owned by the first parameter of an assignment.
+func (w *Workspace) isStartingAtFeature(f *el) bool {
+	owning := w.featureOwningType(f)
+	if owning == nil || !owning.IsA("Feature") {
+		return false
+	}
+	action := w.featureOwningType(owning)
+	if action == nil || !action.IsA("AssignmentActionUsage") {
+		return false
+	}
+	params := w.ownedParameters(action)
+	return len(params) > 0 && params[0] == owning
+}
+
+// isAccessedFeature: f is the first feature of the startingAt feature.
+func (w *Workspace) isAccessedFeature(f *el) bool {
+	owning := w.featureOwningType(f)
+	if owning == nil || !owning.IsA("Feature") || !w.isStartingAtFeature(owning) {
+		return false
+	}
+	owned := w.ownedFeatures(owning)
+	return len(owned) > 0 && owned[0] == f
 }
 
 // addRedefinitions follows FeatureAdapter.addRedefinitions: a parameter or end

@@ -107,3 +107,50 @@ func TestMaterializeWritesTheImpliedRelationshipsIntoTheTree(t *testing.T) {
 		t.Errorf("ImpliedGeneralizations after Materialize: %d", len(got))
 	}
 }
+
+// assign index := 1 : the target's nested features redefine startingAt and
+// accessedFeature (the latter also the feature assigned), and the value
+// redefines replacementValues.
+func TestImpliedRedefinitionsOfAnAssignment(t *testing.T) {
+	w, roots := resolved(t, true, `package P {
+		action def Loop { attribute index; action init assign index := 1; }
+	}`)
+	var assign *model.Element
+	roots[0].Walk(func(e *model.Element) {
+		if assign == nil && e.Class == "AssignmentActionUsage" {
+			assign = e
+		}
+	})
+	if assign == nil {
+		t.Fatal("no assignment")
+	}
+	redefines := func(f *model.Element) string {
+		var out []string
+		for _, im := range w.ImpliedGeneralizations(f) {
+			if im.Kind == "Redefinition" {
+				out = append(out, QualifiedName(im.Target))
+			}
+		}
+		sort.Strings(out)
+		return strings.Join(out, "; ")
+	}
+	params := w.ownedParameters(assign)
+	if len(params) != 2 {
+		t.Fatalf("%d parameters, want 2", len(params))
+	}
+	startingAt := w.ownedFeatures(params[0])[0]
+	accessed := w.ownedFeatures(startingAt)[0]
+	for _, c := range []struct {
+		name string
+		f    *model.Element
+		want string
+	}{
+		{"startingAt", startingAt, "FeatureReferencingPerformances::FeatureAccessPerformance::onOccurrence::startingAt"},
+		{"accessedFeature", accessed, "FeatureReferencingPerformances::FeatureAccessPerformance::onOccurrence::startingAt::accessedFeature; P::Loop::index"},
+		{"value", params[1], "Actions::AssignmentAction::replacementValues"},
+	} {
+		if got := redefines(c.f); got != c.want {
+			t.Errorf("%s redefines %q, want %q", c.name, got, c.want)
+		}
+	}
+}

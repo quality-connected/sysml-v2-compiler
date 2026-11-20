@@ -8,6 +8,11 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- An assignment (`assign a := v`) now gets its implied relationships as the pilot
+  gives them: the nested features of its target redefine `startingAt` and
+  `accessedFeature`, the innermost also the feature assigned, and the value
+  redefines `replacementValues` (a parameter is matched against the general
+  type's parameters without the inherited ones that its own redefine).
 - The expression in a bound value (`= ...`) of a variable feature is no longer
   featured by the generated snapshots feature of its owner, as the pilot does
   not (195 extra implied relationships down to 56).
