@@ -37,8 +37,8 @@ So changes reach `main` through a pull request:
 - Work on a branch off an up-to-date `main`; keep one commit per
   increment on it, as above. Never commit to local `main`.
 - Push the branch over SSH (`origin` is `git@github.com:...`) and open the
-  PR with `gh pr create`, as `chrismooreproductions`. Don't push or open a
-  PR unprompted; it is the user's call, like tagging.
+  PR with `gh pr create`. Don't push or open a PR unprompted; it is the
+  user's call, like tagging.
 - Merge with **rebase**, the only method the repo allows (squash and merge
   commits are disabled), so each increment stays its own commit on `main`.
   Head branches are deleted on merge.
