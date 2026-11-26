@@ -39,9 +39,9 @@ So changes reach `main` through a pull request:
 - Push the branch over SSH (`origin` is `git@github.com:...`) and open the
   PR with `gh pr create`, as `chrismooreproductions`. Don't push or open a
   PR unprompted; it is the user's call, like tagging.
-- Merge with **rebase** so each increment stays its own commit on `main`
-  (squash only if the user asks). Merge commits are disabled. Head branches
-  are deleted on merge.
+- Merge with **rebase**, the only method the repo allows (squash and merge
+  commits are disabled), so each increment stays its own commit on `main`.
+  Head branches are deleted on merge.
 - After the merge, `git switch main && git pull` before tagging a release.
 - If a CI job in `.github/workflows/ci.yml` is renamed, update the required
   checks in the `protect-main` ruleset, or PRs will wait forever.
