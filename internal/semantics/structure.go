@@ -12,7 +12,7 @@
 package semantics
 
 import (
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/model"
+	"github.com/quality-connected/sysml-v2-compiler/internal/model"
 )
 
 // Structure applies the structural rules to a post-processed model, in place.

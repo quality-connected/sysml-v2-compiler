@@ -5,7 +5,7 @@ is implemented; this file is about *how* to work on it.
 
 ## Module
 
-`github.com/chrismooreproductions/sysml-v2-compiler`, Go 1.27. The public API
+`github.com/quality-connected/sysml-v2-compiler`, Go 1.27. The public API
 is the single package `sysml`; everything else lives under `internal/`
 (grammar, syntax, schema, model, postprocess, semantics, library,
 conformance). `cmd/sysmlc` is the command. The roadmap is kept locally in

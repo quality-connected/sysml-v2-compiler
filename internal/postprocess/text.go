@@ -9,7 +9,7 @@ package postprocess
 import (
 	"strings"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/model"
+	"github.com/quality-connected/sysml-v2-compiler/internal/model"
 )
 
 // unescapeString follows ElementUtil.unescapeString: a literal that starts

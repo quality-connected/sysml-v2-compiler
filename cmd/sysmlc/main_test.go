@@ -16,7 +16,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/lsp"
+	"github.com/quality-connected/sysml-v2-compiler/lsp"
 )
 
 // invoke runs the command with the given arguments and returns its exit status

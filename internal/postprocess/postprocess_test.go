@@ -5,9 +5,9 @@ package postprocess
 import (
 	"testing"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/grammar"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/model"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/syntax"
+	"github.com/quality-connected/sysml-v2-compiler/internal/grammar"
+	"github.com/quality-connected/sysml-v2-compiler/internal/model"
+	"github.com/quality-connected/sysml-v2-compiler/internal/syntax"
 )
 
 func run(t *testing.T, lang grammar.Language, src string) *model.Element {

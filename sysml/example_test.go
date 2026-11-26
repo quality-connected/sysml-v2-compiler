@@ -5,7 +5,7 @@ package sysml_test
 import (
 	"fmt"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/sysml"
+	"github.com/quality-connected/sysml-v2-compiler/sysml"
 )
 
 // Parse reads one file and builds its model. Names are not resolved, so a

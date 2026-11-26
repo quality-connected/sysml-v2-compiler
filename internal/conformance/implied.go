@@ -9,10 +9,10 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/library"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/model"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/postprocess"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/semantics"
+	"github.com/quality-connected/sysml-v2-compiler/internal/library"
+	"github.com/quality-connected/sysml-v2-compiler/internal/model"
+	"github.com/quality-connected/sysml-v2-compiler/internal/postprocess"
+	"github.com/quality-connected/sysml-v2-compiler/internal/semantics"
 )
 
 // ImpliedStats counts how the implied general types we compute compare with

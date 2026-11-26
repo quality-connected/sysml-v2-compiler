@@ -14,8 +14,8 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/grammar"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/syntax"
+	"github.com/quality-connected/sysml-v2-compiler/internal/grammar"
+	"github.com/quality-connected/sysml-v2-compiler/internal/syntax"
 )
 
 //go:embed all:sysml.library

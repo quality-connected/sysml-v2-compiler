@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/model"
+	"github.com/quality-connected/sysml-v2-compiler/internal/model"
 )
 
 // impliedOf lists the implied general types of the first element of a class

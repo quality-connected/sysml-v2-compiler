@@ -31,8 +31,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/lsp"
-	"github.com/chrismooreproductions/sysml-v2-compiler/sysml"
+	"github.com/quality-connected/sysml-v2-compiler/lsp"
+	"github.com/quality-connected/sysml-v2-compiler/sysml"
 )
 
 func main() { os.Exit(run(os.Args[1:], os.Stdout, os.Stderr)) }

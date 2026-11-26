@@ -6,7 +6,7 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/grammar"
+	"github.com/quality-connected/sysml-v2-compiler/internal/grammar"
 )
 
 var (

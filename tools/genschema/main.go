@@ -11,7 +11,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/schema/gen"
+	"github.com/quality-connected/sysml-v2-compiler/internal/schema/gen"
 )
 
 func main() {

@@ -8,8 +8,8 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/grammar"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/schema"
+	"github.com/quality-connected/sysml-v2-compiler/internal/grammar"
+	"github.com/quality-connected/sysml-v2-compiler/internal/schema"
 )
 
 // Every node the parser builds for the corpus uses a metaclass and properties

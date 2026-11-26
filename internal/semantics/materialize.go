@@ -5,7 +5,7 @@ package semantics
 import (
 	"strings"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/model"
+	"github.com/quality-connected/sysml-v2-compiler/internal/model"
 )
 
 // targetRoles name the property that holds the target of each kind of implied

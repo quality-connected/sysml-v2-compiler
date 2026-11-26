@@ -9,12 +9,12 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/grammar"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/library"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/model"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/postprocess"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/semantics"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/syntax"
+	"github.com/quality-connected/sysml-v2-compiler/internal/grammar"
+	"github.com/quality-connected/sysml-v2-compiler/internal/library"
+	"github.com/quality-connected/sysml-v2-compiler/internal/model"
+	"github.com/quality-connected/sysml-v2-compiler/internal/postprocess"
+	"github.com/quality-connected/sysml-v2-compiler/internal/semantics"
+	"github.com/quality-connected/sysml-v2-compiler/internal/syntax"
 )
 
 // Build runs the pipeline on one source file as far as it goes today.

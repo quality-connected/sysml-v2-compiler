@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/grammar"
+	"github.com/quality-connected/sysml-v2-compiler/internal/grammar"
 )
 
 func mustParse(t *testing.T, lang grammar.Language, src string) *Node {

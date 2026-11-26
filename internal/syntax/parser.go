@@ -8,8 +8,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/grammar"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/schema"
+	"github.com/quality-connected/sysml-v2-compiler/internal/grammar"
+	"github.com/quality-connected/sysml-v2-compiler/internal/schema"
 )
 
 // Parse parses a SysML v2 or KerML document. It returns the root Namespace.

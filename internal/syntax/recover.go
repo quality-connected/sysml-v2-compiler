@@ -5,7 +5,7 @@ package syntax
 import (
 	"errors"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/grammar"
+	"github.com/quality-connected/sysml-v2-compiler/internal/grammar"
 )
 
 // maxErrors bounds how many syntax errors ParseRecover reports for a file.

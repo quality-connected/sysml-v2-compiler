@@ -5,7 +5,7 @@ package syntax
 import (
 	"testing"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/grammar"
+	"github.com/quality-connected/sysml-v2-compiler/internal/grammar"
 )
 
 func TestParseRecoverReportsEveryError(t *testing.T) {

@@ -15,7 +15,7 @@ import (
 	"time"
 	"weak"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/sysml"
+	"github.com/quality-connected/sysml-v2-compiler/sysml"
 )
 
 // shutdownAndWait ends the conversation the way an editor does, and waits for

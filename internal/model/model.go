@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/schema"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/syntax"
+	"github.com/quality-connected/sysml-v2-compiler/internal/schema"
+	"github.com/quality-connected/sysml-v2-compiler/internal/syntax"
 )
 
 // Element is an instance of a metaclass.
