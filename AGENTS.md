@@ -5,7 +5,7 @@ is implemented; this file is about *how* to work on it.
 
 ## Module
 
-`github.com/chrismooreproductions/sysml-v2-compiler`, Go 1.27. The public API
+`github.com/quality-connected/sysml-v2-compiler`, Go 1.27. The public API
 is the single package `sysml`; everything else lives under `internal/`
 (grammar, syntax, schema, model, postprocess, semantics, library,
 conformance). `cmd/sysmlc` is the command. The roadmap is kept locally in
@@ -37,8 +37,8 @@ So changes reach `main` through a pull request:
 - Work on a branch off an up-to-date `main`; keep one commit per
   increment on it, as above. Never commit to local `main`.
 - Push the branch over SSH (`origin` is `git@github.com:...`) and open the
-  PR with `gh pr create`, as `chrismooreproductions`. Don't push or open a
-  PR unprompted; it is the user's call, like tagging.
+  PR with `gh pr create`. Don't push or open a PR unprompted; it is the
+  user's call, like tagging.
 - Merge with **rebase**, the only method the repo allows (squash and merge
   commits are disabled), so each increment stays its own commit on `main`.
   Head branches are deleted on merge.
