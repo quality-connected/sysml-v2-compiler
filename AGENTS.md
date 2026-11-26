@@ -27,6 +27,25 @@ edit and not a giant batch at the end. Never commit anything the user
 didn't ask for — e.g. a scratch example file sitting in the working tree
 is the user's to commit, not yours to sweep in.
 
+## Branches and pull requests
+
+`main` is protected by a ruleset (no bypass, for anyone): no direct pushes,
+no force-push or deletion, linear history only, and the CI jobs `test` and
+`conformance` must pass. Tags matching `v*` cannot be moved or deleted.
+So changes reach `main` through a pull request:
+
+- Work on a branch off an up-to-date `main`; keep one commit per
+  increment on it, as above. Never commit to local `main`.
+- Push the branch over SSH (`origin` is `git@github.com:...`) and open the
+  PR with `gh pr create`, as `chrismooreproductions`. Don't push or open a
+  PR unprompted; it is the user's call, like tagging.
+- Merge with **rebase** so each increment stays its own commit on `main`
+  (squash only if the user asks). Merge commits are disabled. Head branches
+  are deleted on merge.
+- After the merge, `git switch main && git pull` before tagging a release.
+- If a CI job in `.github/workflows/ci.yml` is renamed, update the required
+  checks in the `protect-main` ruleset, or PRs will wait forever.
+
 ## Verify, never guess
 
 Run the code on real input and read the real output before writing down what
