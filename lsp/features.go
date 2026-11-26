@@ -11,7 +11,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/sysml"
+	"github.com/quality-connected/sysml-v2-compiler/sysml"
 )
 
 // withPosition parses a position request, brings the workspace up to date and

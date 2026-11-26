@@ -5,8 +5,8 @@ package sysml
 import (
 	"strings"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/model"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/schema"
+	"github.com/quality-connected/sysml-v2-compiler/internal/model"
+	"github.com/quality-connected/sysml-v2-compiler/internal/schema"
 )
 
 // MembershipKind says how a namespace holds one of its members.

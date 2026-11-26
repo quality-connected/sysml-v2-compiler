@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/model"
+	"github.com/quality-connected/sysml-v2-compiler/internal/model"
 )
 
 // A Value is what an expression evaluates to: a bool, an int64 (Integer), a

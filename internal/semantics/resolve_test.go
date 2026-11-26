@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/grammar"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/model"
+	"github.com/quality-connected/sysml-v2-compiler/internal/grammar"
+	"github.com/quality-connected/sysml-v2-compiler/internal/model"
 )
 
 // resolved builds a workspace from SysML sources (and the standard library if

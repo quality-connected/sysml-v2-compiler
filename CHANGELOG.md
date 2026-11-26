@@ -6,6 +6,13 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- **Breaking:** the module path is now `github.com/quality-connected/sysml-v2-compiler`
+  (the repository moved from `chrismooreproductions`). Change the import paths
+  and `go install` line to the new path. Earlier versions keep the old path in
+  their `go.mod`.
+
 ### Fixed
 
 - An assignment (`assign a := v`) now gets its implied relationships as the pilot
@@ -200,7 +207,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   tonne 1000 kg) and its astronomical unit as `149597870691e11` metres (about
   1.5e22; the real value is 1.5e11), so quantities in those two convert as
   defined, not as physics. The vendored library is not edited.
-  ([#19](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/19))
+  ([#19](https://github.com/quality-connected/sysml-v2-compiler/issues/19))
 
 ## [0.18.1] - 2026-10-15
 
@@ -216,20 +223,20 @@ before). The counts in the entries below are the ones after each fix.
   :> ind;`) is no longer reported as "must be typed by one individual
   definition": the constraints count the individual definitions among the
   usage's distinct types, not only the ones it writes.
-  ([#28](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/28))
+  ([#28](https://github.com/quality-connected/sysml-v2-compiler/issues/28))
 - The feature an assignment assigns is found among the features of the
   expression it is assigned on (`assign counter.count := 0`,
   `assign counting.counter.count := ...`), and a feature chain can follow the
   result of a call (`Increment(c).count`) or of a constructor
   (`new A().g.g`). The release's SysML example models report 21 diagnostics
   instead of 31, and the KerML ones 28 instead of 29.
-  ([#24](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/24),
-  [#25](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/25))
+  ([#24](https://github.com/quality-connected/sysml-v2-compiler/issues/24),
+  [#25](https://github.com/quality-connected/sysml-v2-compiler/issues/25))
 - A variant that names an existing usage (`variant q { ... }`) and a `perform`
   that names an action (`perform ActionTree::providePower;`) are called what
   they reference, so `v::q` and `perform action :>> providePower { ... }`
   resolve. The release's SysML example models report 31 diagnostics instead of
-  48. ([#26](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/26))
+  48. ([#26](https://github.com/quality-connected/sysml-v2-compiler/issues/26))
 - The payload an `accept` declares is visible to the rest of its transition
   (`accept pub : Sig if pub.topic > 0 do ...`), and has the type the accept
   gives it. The transition's payload parameter takes the accept's name before
@@ -238,7 +245,7 @@ before). The counts in the entries below are the ones after each fix.
   (`apayload` in `Actions.sysml`): the library now compiles on its own with no
   diagnostics, and 19,115 of its 19,119 references match the pilot (19,114
   before). The release's SysML example models report 48 diagnostics instead of
-  71. ([#27](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/27))
+  71. ([#27](https://github.com/quality-connected/sysml-v2-compiler/issues/27))
 - `Resolve` added a link feature to every transition that has a succession each
   time it was called (so `sysmlc check`, which resolves twice, made two); it is
   added once.
@@ -247,14 +254,14 @@ before). The counts in the entries below are the ones after each fix.
   no type from `~FuelPort`, and the conjugated definition inherited nothing
   from the definition it conjugates. The release's SysML example models report
   71 diagnostics instead of 119.
-  ([#22](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/22))
+  ([#22](https://github.com/quality-connected/sysml-v2-compiler/issues/22))
 - An import whose name comes through another import of the same namespace
   (`private import RiskMetadata::*; private import RiskLevelEnum::*;`) now
   resolves; it was reported as unresolved. The resolver remembered a lookup
   that failed only because a sibling import was still being resolved. The
   release's example models report 119 diagnostics instead of 154 (SysML) and 29
   instead of 48 (KerML) as a result.
-  ([#21](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/21))
+  ([#21](https://github.com/quality-connected/sysml-v2-compiler/issues/21))
 
 ## [0.18.0] - 2026-10-15
 
@@ -267,7 +274,7 @@ before). The counts in the entries below are the ones after each fix.
   definition's attributes values by redefining them
   (`requirement r : MassReq { :>> massActual = 1800; }`), and a value that is
   missing makes the result not determined, naming it.
-  ([#13](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/13))
+  ([#13](https://github.com/quality-connected/sysml-v2-compiler/issues/13))
 - A call of a calculation, function or constraint the model defines is
   evaluated (`Range(40, 8)`, `Range(tankSize = 40, consumption = 8)`); a call
   of a library function says it has no body, instead of "cannot evaluate a
@@ -281,8 +288,8 @@ before). The counts in the entries below are the ones after each fix.
   and scaled by a number, and `mass / extra` in the same unit is a plain number.
   Converting between units (`3 [m] + 2 [km]`) and derived units (`mass * extra`,
   `[m/s]`) are not supported: they are not evaluable, with the reason, and
-  never approximated. ([#14](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/14);
-  the rest is [#19](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/19))
+  never approximated. ([#14](https://github.com/quality-connected/sysml-v2-compiler/issues/14);
+  the rest is [#19](https://github.com/quality-connected/sysml-v2-compiler/issues/19))
 
 ## [0.17.0] - 2026-10-15
 
@@ -293,7 +300,7 @@ before). The counts in the entries below are the ones after each fix.
   status of `NotDetermined` (a feature it needs has no value) or
   `NotEvaluable` (unsupported, or the model is wrong), with the `Reason`, the
   `Source` element and its `Span`. It never guesses a value.
-  ([#10](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/10))
+  ([#10](https://github.com/quality-connected/sysml-v2-compiler/issues/10))
 - `EvalError.Unbound` says that a failure is only a missing value.
 - `Workspace.ViewContent` evaluates a view: the elements its exposes bring in
   (membership, namespace and recursive forms; a view that specializes another
@@ -303,8 +310,8 @@ before). The counts in the entries below are the ones after each fix.
   filters were not applied and why, and which elements they could not be decided
   for. Annotations and the members a model's namespace inherits from the
   standard library are not content.
-  ([#12](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/12),
-  [#8](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/8))
+  ([#12](https://github.com/quality-connected/sysml-v2-compiler/issues/12),
+  [#8](https://github.com/quality-connected/sysml-v2-compiler/issues/8))
 - `Workspace.Matches` evaluates a `filter` condition for an element: `@T` (the
   element is an instance of the metaclass, as `@SysML::PartUsage`, or has
   metadata whose type is or specializes `T`, as `@Safety`), `not`, `and`, `or`
@@ -312,7 +319,7 @@ before). The counts in the entries below are the ones after each fix.
   (`@Safety and Safety::level > 2`). A condition it cannot evaluate is
   `NotEvaluable` with the reason and the part responsible; an element with the
   metadata but no value for the field is `NotDetermined`.
-  ([#11](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/11))
+  ([#11](https://github.com/quality-connected/sysml-v2-compiler/issues/11))
 
 ### Changed
 
@@ -331,7 +338,7 @@ before). The counts in the entries below are the ones after each fix.
 - `Facts.Filters` lists the filter conditions of a view or package
   (`filter @SysML::PartUsage;`) in source order, each with its expression and
   its text as written. `sysmlc facts` prints them.
-  ([#7](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/7))
+  ([#7](https://github.com/quality-connected/sysml-v2-compiler/issues/7))
 
 ### Changed
 
@@ -344,7 +351,7 @@ before). The counts in the entries below are the ones after each fix.
 
 - `Facts.PortionKind` says whether a portion of an occurrence is a
   `"timeslice"` or a `"snapshot"`; it is empty for anything else.
-  `sysmlc facts` prints it. ([#6](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/6))
+  `sysmlc facts` prints it. ([#6](https://github.com/quality-connected/sysml-v2-compiler/issues/6))
 
 ## [0.14.0] - 2026-10-15
 
@@ -352,7 +359,7 @@ before). The counts in the entries below are the ones after each fix.
 
 - `Facts.Behavior.Condition` and `ConditionText` give the condition of an `if`
   or `while` action (`count > 0`), as written.
-  ([#5](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/5))
+  ([#5](https://github.com/quality-connected/sysml-v2-compiler/issues/5))
 
 ### Changed
 
@@ -363,7 +370,7 @@ before). The counts in the entries below are the ones after each fix.
   `Behavior.Successions`, marked `End.Implied`. They were nil. The rule agrees
   with the pilot's output for the standard library; the guarded branches of a
   decision and a transition's source are still not inferred.
-  ([#5](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/5))
+  ([#5](https://github.com/quality-connected/sysml-v2-compiler/issues/5))
 
 ## [0.13.0] - 2026-10-15
 
@@ -375,7 +382,7 @@ before). The counts in the entries below are the ones after each fix.
   then `AddAs` each file). `Workspace.FileOf` names the file of a library
   element `library:` followed by that `Path`. All but one of the library's
   references resolve when its files are compiled this way.
-  ([#4](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/4))
+  ([#4](https://github.com/quality-connected/sysml-v2-compiler/issues/4))
 
 ### Fixed
 
@@ -394,14 +401,14 @@ before). The counts in the entries below are the ones after each fix.
 
 - `Facts.Annotations` no longer lists a metadata usage (`@Owner { ... }`) as a
   comment with an empty body. It holds documentation, comments and textual
-  representations only. ([#3](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/3))
+  representations only. ([#3](https://github.com/quality-connected/sysml-v2-compiler/issues/3))
 
 ## [0.12.0] - 2026-10-15
 
 ### Added
 
 - `Facts.IsMessage` tells a `message` from a `flow`.
-  ([#2](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/2))
+  ([#2](https://github.com/quality-connected/sysml-v2-compiler/issues/2))
 
 ### Fixed
 
@@ -409,7 +416,7 @@ before). The counts in the entries below are the ones after each fix.
   occurrences it runs between (`from driver.cmd to vehicle.cmd`, with the whole
   chain in `Path`, or `from driver to vehicle`), and `Facts.Source` and
   `Facts.Target` are set as for a flow.
-  ([#2](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/2))
+  ([#2](https://github.com/quality-connected/sysml-v2-compiler/issues/2))
 
 ## [0.11.1] - 2026-10-14
 
@@ -417,12 +424,12 @@ before). The counts in the entries below are the ones after each fix.
 
 - `expose` no longer fails validation with "An expose must import all", and a
   view's `expose` now imports private members as the pilot does: it defaults
-  `isImportAll` to true. ([#1](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/1))
+  `isImportAll` to true. ([#1](https://github.com/quality-connected/sysml-v2-compiler/issues/1))
 - `render` (and any usage given a default multiplicity when the feature it
   subsets is not owned by a type) no longer fails validation with "Only one
   multiplicity is allowed": `Resolve` added the default multiplicity again each
   time it was called, and `check` calls it twice.
-  ([#1](https://github.com/chrismooreproductions/sysml-v2-compiler/issues/1))
+  ([#1](https://github.com/quality-connected/sysml-v2-compiler/issues/1))
 - A conjugated port typing whose port definition does not resolve (`port p :
   ~Pkg::Fuel` with `Pkg` in another file) crashed the resolver with a nil
   pointer dereference since 0.10.0; it is now reported as unresolved.
@@ -605,14 +612,14 @@ Against the pilot implementation's own output, 99.95% of the standard library's
   verification, use cases and a narrow slice of actions. See the README
   for the exact supported constructs and known gaps.
 
-[Unreleased]: https://github.com/chrismooreproductions/sysml-v2-compiler/compare/v0.9.1...HEAD
-[0.9.1]: https://github.com/chrismooreproductions/sysml-v2-compiler/compare/v0.9.0...v0.9.1
-[0.9.0]: https://github.com/chrismooreproductions/sysml-v2-compiler/compare/v0.8.0...v0.9.0
-[0.8.0]: https://github.com/chrismooreproductions/sysml-v2-compiler/compare/v0.7.0...v0.8.0
-[0.7.0]: https://github.com/chrismooreproductions/sysml-v2-compiler/compare/v0.6.0...v0.7.0
-[0.6.0]: https://github.com/chrismooreproductions/sysml-v2-compiler/compare/v0.5.0...v0.6.0
-[0.5.0]: https://github.com/chrismooreproductions/sysml-v2-compiler/compare/v0.4.0...v0.5.0
-[0.4.0]: https://github.com/chrismooreproductions/sysml-v2-compiler/compare/v0.3.0...v0.4.0
-[0.3.0]: https://github.com/chrismooreproductions/sysml-v2-compiler/compare/v0.2.0...v0.3.0
-[0.2.0]: https://github.com/chrismooreproductions/sysml-v2-compiler/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/chrismooreproductions/sysml-v2-compiler/releases/tag/v0.1.0
+[Unreleased]: https://github.com/quality-connected/sysml-v2-compiler/compare/v0.9.1...HEAD
+[0.9.1]: https://github.com/quality-connected/sysml-v2-compiler/compare/v0.9.0...v0.9.1
+[0.9.0]: https://github.com/quality-connected/sysml-v2-compiler/compare/v0.8.0...v0.9.0
+[0.8.0]: https://github.com/quality-connected/sysml-v2-compiler/compare/v0.7.0...v0.8.0
+[0.7.0]: https://github.com/quality-connected/sysml-v2-compiler/compare/v0.6.0...v0.7.0
+[0.6.0]: https://github.com/quality-connected/sysml-v2-compiler/compare/v0.5.0...v0.6.0
+[0.5.0]: https://github.com/quality-connected/sysml-v2-compiler/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/quality-connected/sysml-v2-compiler/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/quality-connected/sysml-v2-compiler/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/quality-connected/sysml-v2-compiler/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/quality-connected/sysml-v2-compiler/releases/tag/v0.1.0

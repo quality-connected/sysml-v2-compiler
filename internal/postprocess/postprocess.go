@@ -17,8 +17,8 @@
 package postprocess
 
 import (
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/model"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/schema"
+	"github.com/quality-connected/sysml-v2-compiler/internal/model"
+	"github.com/quality-connected/sysml-v2-compiler/internal/schema"
 )
 
 // Run applies the post-processing rules to a model, in place.

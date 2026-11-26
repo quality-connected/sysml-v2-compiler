@@ -6,7 +6,7 @@ import (
 	"path"
 	"sort"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/library"
+	"github.com/quality-connected/sysml-v2-compiler/internal/library"
 )
 
 // A LibraryFile is one file of the standard library that every Workspace

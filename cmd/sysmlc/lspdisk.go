@@ -12,8 +12,8 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/lsp"
-	"github.com/chrismooreproductions/sysml-v2-compiler/sysml"
+	"github.com/quality-connected/sysml-v2-compiler/lsp"
+	"github.com/quality-connected/sysml-v2-compiler/sysml"
 )
 
 // lspOptions are the options of the language server the command runs for an

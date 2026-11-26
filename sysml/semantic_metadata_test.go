@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/semantics"
+	"github.com/quality-connected/sysml-v2-compiler/internal/semantics"
 )
 
 // A type annotated by semantic metadata is specialized by the metadata's base

@@ -7,7 +7,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/schema/gen"
+	"github.com/quality-connected/sysml-v2-compiler/internal/schema/gen"
 )
 
 // The checked-in tables must be exactly what the generator makes from the

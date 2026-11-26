@@ -36,8 +36,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/library"
-	"github.com/chrismooreproductions/sysml-v2-compiler/sysml"
+	"github.com/quality-connected/sysml-v2-compiler/internal/library"
+	"github.com/quality-connected/sysml-v2-compiler/sysml"
 )
 
 // A Host runs sessions. Its methods are safe to call from any goroutine.

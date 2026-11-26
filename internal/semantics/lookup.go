@@ -10,7 +10,7 @@ package semantics
 import (
 	"strings"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/model"
+	"github.com/quality-connected/sysml-v2-compiler/internal/model"
 )
 
 // Name resolution follows the specification's operations on Namespace

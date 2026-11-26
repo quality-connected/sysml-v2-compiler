@@ -5,10 +5,10 @@ package semantics
 import (
 	"testing"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/grammar"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/model"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/postprocess"
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/syntax"
+	"github.com/quality-connected/sysml-v2-compiler/internal/grammar"
+	"github.com/quality-connected/sysml-v2-compiler/internal/model"
+	"github.com/quality-connected/sysml-v2-compiler/internal/postprocess"
+	"github.com/quality-connected/sysml-v2-compiler/internal/syntax"
 )
 
 func build(t *testing.T, src string) *model.Element {

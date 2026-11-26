@@ -12,7 +12,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/grammar"
+	"github.com/quality-connected/sysml-v2-compiler/internal/grammar"
 )
 
 // Pos is a position in a source file. Line and Column are 1-based; Column

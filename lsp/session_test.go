@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/sysml"
+	"github.com/quality-connected/sysml-v2-compiler/sysml"
 )
 
 // client is an editor talking to a server over pipes.

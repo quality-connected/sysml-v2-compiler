@@ -7,7 +7,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/semantics/gen"
+	"github.com/quality-connected/sysml-v2-compiler/internal/semantics/gen"
 )
 
 // The checked-in table must be exactly what the generator makes from the

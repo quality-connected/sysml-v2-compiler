@@ -27,7 +27,7 @@ files against each other and the bundled standard library (`WithoutStandardLibra
 turns that off). The model is generic: an `Element` has a metaclass name, a
 source span and ordered properties named as in the specification; `IsA`,
 `Children`, `Child`, `Text`, `IsTrue` and `Refs` read it. Every exported
-identifier is documented; run `go doc github.com/chrismooreproductions/sysml-v2-compiler/sysml`.
+identifier is documented; run `go doc github.com/quality-connected/sysml-v2-compiler/sysml`.
 
 On top of the generic tree are three views a consumer that draws or tabulates
 models can use without knowing how the metamodel encodes things:
@@ -72,7 +72,7 @@ models can use without knowing how the metamodel encodes things:
 ## Command line
 
 ```
-go install github.com/chrismooreproductions/sysml-v2-compiler/cmd/sysmlc@latest
+go install github.com/quality-connected/sysml-v2-compiler/cmd/sysmlc@latest
 
 sysmlc check   [-nolib] <file or directory>...   syntax errors and unresolved names
 sysmlc resolve [-nolib] <file or directory>...   each reference and its target
@@ -157,7 +157,7 @@ builds for `GOOS=js GOARCH=wasm`.
 
 ## Status
 
-The work that remains is tracked as [GitHub issues](https://github.com/chrismooreproductions/sysml-v2-compiler/issues):
+The work that remains is tracked as [GitHub issues](https://github.com/quality-connected/sysml-v2-compiler/issues):
 the open resolver gaps, the validation constraints not yet checked, unit
 conversion, and the example models' diagnostics. Releases and what changed in
 each are in [CHANGELOG.md](CHANGELOG.md).

@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/chrismooreproductions/sysml-v2-compiler/internal/semantics"
+	"github.com/quality-connected/sysml-v2-compiler/internal/semantics"
 )
 
 func resolved(t *testing.T, name, src string) (*Workspace, []Diagnostic) {
